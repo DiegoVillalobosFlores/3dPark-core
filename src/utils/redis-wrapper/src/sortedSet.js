@@ -33,6 +33,10 @@ class SortedSet {
 	remove(key, values){
 		return this.redis.zrem(key, values);
 	}
+
+	score(key, value){
+		return this.redis.zscore(key, value);
+	}
 }
 
 export default SortedSet;

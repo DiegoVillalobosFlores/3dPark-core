@@ -19,7 +19,7 @@ test.before(t => {
 });
 
 test.beforeEach(async t => {
-	await t.context.client.flushall();
+	await t.context.client.flushdb();
 });
 
 test.serial('crud', async t => {
@@ -46,6 +46,14 @@ test.serial('crud', async t => {
 
 	t.is(deletedResponse.length, 1);
 	t.is(deletedResponse[0],'diego - 1');
+
+	const score = await sortedSet.score('test', 'diego - 1');
+
+	t.is(score, '1');
+
+	const invalidScore = await sortedSet.score('test', 'invalid');
+
+	t.is(invalidScore,null);
 });
 
 test.serial('pipeline', async t => {
