@@ -25,6 +25,8 @@ test.beforeEach(async t => {
 test.serial('crud', async t => {
 	const { sortedSet } = t.context;
 
+	t.is(sortedSet.POSTFIX, 'ZSET');
+
 	await sortedSet.add('test', 'diego', 2);
 
 	const rangeResponse = await sortedSet.range('test');

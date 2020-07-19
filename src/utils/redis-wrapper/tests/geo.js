@@ -25,6 +25,8 @@ test.beforeEach(async t => {
 test.serial('crud', async t => {
 	const { geo } = t.context;
 
+	t.is(geo.POSTFIX, 'ZSET');
+
 	await geo.add('Berlin', 'Uhlandstrasse Bhf', 13.326173, 52.502782);
 	await geo.add('Berlin', 'Kleistpark Bhf', 13.360329, 52.490646);
 	await geo.add('Berlin', 'Fehrbelliner Platz Bhf', 13.314760, 52.490248);

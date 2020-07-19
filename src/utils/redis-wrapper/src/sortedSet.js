@@ -3,6 +3,7 @@ class SortedSet {
 		this.redis = redis;
 		this.isMulti = false;
 		this.client = redis;
+		this.POSTFIX = 'ZSET';
 	}
 
 	multi(){
