@@ -4,16 +4,27 @@
   "description": "Backend for 3dPark",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nyc ava"
   },
   "keywords": [],
-  "author": "",
+  "author": "Villalobos <diegovillalobos397@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "ava": "3.10.1",
+    "dotenv": "8.2.0",
+    "esm": "3.2.25",
     "ioredis": "4.17.3"
   },
   "devDependencies": {
-    "eslint": "7.5.0"
-  }
+    "ava": "3.10.1",
+    "eslint": "7.5.0",
+    "nyc": "^15.1.0"
+  },
+  "ava": {
+    "verbose": true,
+    "require": [
+      "esm"
+    ]
+  },
+  "repository": "https://github.com/DiegoVillalobosFlores/3dPark-core.git",
+  "private": false
 }
