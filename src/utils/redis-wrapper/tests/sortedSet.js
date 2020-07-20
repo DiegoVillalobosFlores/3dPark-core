@@ -16,10 +16,12 @@ test.before(t => {
 
 	t.context.client = redis;
 	t.context.sortedSet = sortedSet;
+	t.context.keys = ['test', 'pipeline'];
 });
 
-test.beforeEach(async t => {
-	await t.context.client.flushdb();
+test.after(async t => {
+	const { client, keys } = t.context;
+	await client.del(keys);
 });
 
 test.serial('crud', async t => {

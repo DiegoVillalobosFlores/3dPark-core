@@ -9,17 +9,19 @@ test.before(t => {
 	const redis = new IOredis({
 		port: process.env.REDIS_PORT,
 		host: process.env.REDIS_HOST,
-		db: 2,
+		db: 1,
 	});
 
 	const geo = new RedisWrapper.Geo(redis);
 
 	t.context.client = redis;
 	t.context.geo = geo;
+	t.context.keys = ['Berlin'];
 });
 
-test.beforeEach(async t => {
-	await t.context.client.flushdb();
+test.afterEach(async t => {
+	const { client, keys } = t.context;
+	await client.del(keys);
 });
 
 test.serial('crud', async t => {

@@ -9,17 +9,19 @@ test.before(t => {
 	const redis = new IOredis({
 		port: process.env.REDIS_PORT,
 		host: process.env.REDIS_HOST,
-		db: 3,
+		db: 1,
 	});
 
 	const hash = new RedisWrapper.Hash(redis);
 
 	t.context.client = redis;
 	t.context.hash = hash;
+	t.context.keys = ['schedule.today'];
 });
 
-test.beforeEach(async t => {
-	await t.context.client.flushdb();
+test.afterEach(async t => {
+	const { client, keys } = t.context;
+	await client.del(keys);
 });
 
 test.serial('hash', async t => {
