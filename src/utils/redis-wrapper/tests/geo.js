@@ -3,7 +3,7 @@ import IOredis from 'ioredis';
 import dotenv from 'dotenv';
 dotenv.config();
 
-import RedisWrapper from '../src/index';
+import RedisWrapper from '../src';
 
 test.before(t => {
 	const redis = new IOredis({

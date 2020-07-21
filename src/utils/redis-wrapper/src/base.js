@@ -3,15 +3,15 @@ class Base {
 		this.redis = redis;
 	}
 
-	del(keys){
+	async del(keys){
 		return this.redis.del(keys);
 	}
 
-	set(key, value){
+	async set(key, value){
 		return this.redis.set(key, value);
 	}
 
-	get(key){
+	async get(key){
 		return this.redis.get(key);
 	}
 }
