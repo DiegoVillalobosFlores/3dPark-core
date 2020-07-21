@@ -4,6 +4,7 @@ class SortedSet {
 		this.isMulti = false;
 		this.client = redis;
 		this.POSTFIX = 'ZSET';
+		this.CONNECTOR = ':';
 	}
 
 	multi(){

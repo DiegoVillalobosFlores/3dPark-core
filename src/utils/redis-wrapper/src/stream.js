@@ -6,6 +6,8 @@ class Stream {
 	constructor(redis) {
 		this.redis = redis;
 		this.FLAT_DELIMITER = '~';
+		this.POSTFIX = 'STREAM';
+		this.CONNECTOR = ':';
 	}
 
 	formatResponse(response, schema){

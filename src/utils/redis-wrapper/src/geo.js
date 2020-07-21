@@ -14,7 +14,18 @@ class Geo extends SortedSet{
 		return this.redis.geodist(key, from, to, unit);
 	}
 
-	async radius(key, lon, lat, radius, limit, unit = 'm', distance = true, coordinates = true, orientation = 'ASC', format = true){
+	async radius(
+		key,
+		lon,
+		lat,
+		radius,
+		limit,
+		unit = 'm',
+		distance = true,
+		coordinates = true,
+		orientation = 'ASC',
+		format = true
+	) {
 		const args = [key,lon,lat, radius,unit, orientation];
 		if (distance) args.push('WITHDIST');
 		if (coordinates) args.push('WITHCOORD');

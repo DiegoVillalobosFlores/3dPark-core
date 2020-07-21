@@ -2,6 +2,7 @@ class Hash {
 	constructor(redis) {
 		this.redis = redis;
 		this.POSTFIX = 'HASH';
+		this.CONNECTOR = ':';
 	}
 
 	add(key, fields){
