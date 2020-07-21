@@ -31,7 +31,7 @@ test.serial('crud', async t => {
 
 	const response = await base.get('keyToDelete');
 
-	t.is(response, 'keyToDelete');
+	t.is(response, 'delete me plz');
 
 	await base.del('keyToDelete');
 

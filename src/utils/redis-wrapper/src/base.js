@@ -3,12 +3,16 @@ class Base {
 		this.redis = redis;
 	}
 
-	del(key){
-		return this.redis.delete(key);
+	del(keys){
+		return this.redis.del(keys);
 	}
 
 	set(key, value){
 		return this.redis.set(key, value);
+	}
+
+	get(key){
+		return this.redis.get(key);
 	}
 }
 
