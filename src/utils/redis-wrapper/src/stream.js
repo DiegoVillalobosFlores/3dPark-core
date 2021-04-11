@@ -14,7 +14,7 @@ class Stream {
 		const flattenSchema = schema
 			? flatten(schema, { delimiter: this.FLAT_DELIMITER })
 			: {};
-		return response.map(([_messageId, data ]) => {
+		return response.map(([ _messageId, data ]) => {
 			const result = { _messageId };
 			for(let i = 0 ; i < data.length ; i = i +2){
 				const field = data[i];

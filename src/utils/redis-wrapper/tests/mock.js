@@ -4,9 +4,10 @@ import RedisMock from '../mock';
 
 test.before(t => {
 	t.context.base = new RedisMock.Base();
+	t.context.stream = new RedisMock.Stream();
 });
 
-test.serial('base', async t => {
+test('base', async t => {
 	const { base } = t.context;
 
 	const setResult = await base.set('key', 'value');
@@ -24,4 +25,21 @@ test.serial('base', async t => {
 	const nullGet = await base.get('key');
 
 	t.is(nullGet, null);
+});
+
+test('stream', async t => {
+	const { stream } = t.context;
+
+	const addResult = await stream.add('key',
+		{ id: 'test', nested: { object: true } }
+	);
+
+	t.is(addResult, 0);
+
+	const rangeResult = await stream.range('key');
+
+	t.is(rangeResult.length, 1);
+	t.is(rangeResult[0]._messageId, 0);
+
+	console.log(rangeResult);
 });
